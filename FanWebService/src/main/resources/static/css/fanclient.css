@@ -1,0 +1,185 @@
+@charset "ISO-8859-1";
+
+h1 {
+   margin-top: 5px;
+}
+
+#masterDiv {
+	width: 510px; 
+	height: 600px; 
+	position: absolute; 
+	left: 50%; 
+	top: 20%; 
+	margin-left: -250px; 
+}
+
+#headerDiv {
+	border:        2px solid blue; 
+	border-radius: 15px; 
+	width:         500px; 
+	height:        50px; 
+	background:    lightgray;  
+	text-align:    center;
+}
+
+#mainDiv {
+	border:        2px solid blue; 
+	border-radius: 15px; 
+	background:    blue; 
+	width:         500px; 
+	height:        300px; 
+	text-align:    center;
+}
+
+#mainTable {
+	border:         1px solid; 
+	border-spacing: 0px; 
+	display:        inline-table; 
+	background:     white; 
+	margin-top:     50px;
+}
+
+#triggerDiff {
+	width:        50px;
+	margin-left:  10px;
+	margin-right: 10px;
+}
+
+
+#downstairsTemp {
+	width:        50px; 
+	margin-left:  10px;  
+	margin-right: 10px; 
+}
+
+#tdDownstairsTemp {
+	border:     1px solid; 
+	text-align: center; 
+	margin:     0px;
+	height:     60px;
+}
+
+#lblDownstairsTemp {
+	margin-left: 10px;
+}
+
+#lblUpstairsTemp {
+	margin-left: 10px;
+}
+
+#tdUpstairsTemp {
+	border:     1px solid;
+	text-align: center; 
+	margin:     0px;
+	height:     60px;
+}
+
+#upstairsTemp {
+	width:        50px; 
+	margin-left:  10px; 
+	margin-right: 10px;
+}
+
+#fanoff {
+	visibility: visible; 
+	margin-top: 3px; 
+	width:      75px; 
+	height:     50px; 
+	position:   absolute;
+}
+
+#fanon {
+	    visibility: hidden; 
+	    margin-top: 3px; 
+	    width:      75px; 
+	    height:     50px;
+}
+
+#tdButtons {
+	border:     1px solid;
+	text-align:	center; 
+	margin:     0px;
+}
+
+#fansetting {
+	width:        50px; 
+	margin-left:  5px; 
+	margin-right: 10px;
+}
+
+#lblFanSetting {
+	margin-left: 10px;
+}
+
+#tdFanSetting {
+	border: 1px solid; 
+	height: 60px; 
+	margin: 0;
+}
+
+#divFanImages {
+	display:  table-cell; 
+	position: relative; 
+	width:    33%;
+}
+
+#fanstatus {
+	display:  block; 
+	position: absolute; 
+	top:      18px; 
+	left:     10px; 
+	width:    50%;
+}
+
+#divFanStatus {
+	display:  table-cell; 
+	position: relative; 
+	width:    31%;
+}
+
+#divLblFanStatus {
+	display:  table-cell; 
+	position: relative; 
+	width:    36%;
+}
+
+#lblFanStatus {
+	display:  block; 
+	position: absolute; 
+	top:      20px; 
+	left:     10px;
+}
+
+#tdFanStatus {
+	border: 1px solid; 
+	margin: 0px; 
+	height:60px;
+}
+
+#tdTriggerDiff {
+	border:     1px solid; 
+	text-align: center; 
+	margin:     0px; 
+	height:     60px;
+}
+
+#lblTriggerDiff {
+	margin-left: 10px;
+}
+
+#btnAbout {
+	float: right;
+	margin-right: 10px;
+	margin-top: 15px;
+}
+
+#divAboutText {
+	border:        1px solid black;
+	background:    lightyellow;
+	width:         500px;
+	height:        180px;
+	padding-left:  10px;
+	padding-right: 10px;
+	display:       none;
+}
+
