@@ -1,0 +1,6 @@
+com\fan\service\controller\FanController.class
+com\fan\timers\FanOffTimer.class
+com\fan\timers\FanOnTimer.class
+com\fan\timers\FanAutoTimer.class
+com\fan\service\bean\Fan.class
+com\fan\service\FanWebService.class

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>fan controller</title>
+<link rel="stylesheet" href="../css/fanclient.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="./jsp/fanclient.jsp"></script>
+</head>
+	<body onload='getInitialFanValues()'>
+	<div id="masterDiv">
+		<div id="headerDiv">
+			<h1>Fan Controller</h1>
+		</div>
+			<div id="mainDiv">
+				<table id="mainTable">
+					<tr>
+						<td id="tdDownstairsTemp" >
+							<label id="lblDownstairsTemp" for="downstairsTemp">Downstairs Temperature</label> 
+							<input id="downstairsTemp" readonly type="text" />
+						</td>
+						<td id="tdUpstairsTemp">
+							<label id="lblUpstairsTemp" for="upstairsTemp">Upstairs Temperature</label> 
+							<input id="upstairsTemp" readonly type="text" />
+						</td>
+					</tr>
+					<tr>
+						<td id="tdTriggerDiff">
+							<label id="lblTriggerDiff" for="triggerDiff">Trigger Differential</label> 
+							<input id="triggerDiff" type="text" maxlength="3" onblur="setTriggerDiff()" onkeypress="return onlyNumberKey(event)"/>
+						</td>
+						<td id="tdFanStatus">
+							<div id="divLblFanStatus">
+								<label id="lblFanStatus" for="fanstatus">Fan Status</label>
+							</div>
+							<div id="divFanStatus">
+								<input readonly type="text" id="fanstatus" />
+							</div>
+							<div id="divFanImages">
+								<img id="fanoff" src="fanoff.gif" >
+								<img id="fanon" src="fan.gif"     >
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td id="tdButtons">
+							<button onClick="setFan('ON')">On</button>
+							<button onClick="setFan('OFF')">Off</button>
+							<button onClick="setFan('AUTO')">Auto</button>
+						</td>
+						<td id="tdFanSetting">
+							<label id="lblFanSetting" for="fansetting">Fan Setting</label> 
+							<input id="fansetting" readonly type="text" value="OFF" />
+						</td>
+					</tr>
+				</table>
+				<button id="btnAbout" onclick="$('#divAboutText').fadeIn()">About</button>
+			</div>
+	        <div id="divAboutText"></div>
+        </div>
+	</body>
+</html>

@@ -1,1 +1,3 @@
 # fan-web-service
+
+This is a simulation of a web service and client for a fan controller. It emulates a fan mounted in a lower level of a two-story space, pointed to blow air upward. Two temperature sensors, one downstairs and one upstairs, read the air temperatures and reports them to the web service. The fan can be manually set on or off by the user using the client browser interface. It can also be set to automatically turn on when the differences between the two temperatures reaches a user-selected trigger differential. Status, temperatures, and fan activity are reported in the client interface. Using a web service would allow a user to control the fan from anywhere in the world over the web.
