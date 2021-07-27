@@ -2,62 +2,62 @@
 
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset='ISO-8859-1'>
 <title>fan controller</title>
-<link rel="stylesheet" href="../css/fanclient.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="./jsp/fanclient.jsp"></script>
+<link rel='stylesheet' href='../css/fanclient.css'>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+<script type='text/javascript' src='./jsp/fanclient.jsp'></script>
 </head>
 	<body onload='getInitialFanValues()'>
-	<div id="masterDiv">
-		<div id="headerDiv">
-			<h1>Fan Controller</h1>
+	<div id='div-master'>
+		<div id='div-header'>
+		<img id='img-title' src='images/title.png'>
 		</div>
-			<div id="mainDiv">
-				<table id="mainTable">
+			<div id='div-main'>
+				<table id='table-main'>
 					<tr>
-						<td id="tdDownstairsTemp" >
-							<label id="lblDownstairsTemp" for="downstairsTemp">Downstairs Temperature</label> 
-							<input id="downstairsTemp" readonly type="text" />
+						<td id='td-downstairs-temp' class='td-class' >
+							<label id='lbl-downstairs-temp' for='downstairs-temp'>Downstairs Temperature</label> 
+							<input id='downstairs-temp' class='input-class' readonly type='text'/>
 						</td>
-						<td id="tdUpstairsTemp">
-							<label id="lblUpstairsTemp" for="upstairsTemp">Upstairs Temperature</label> 
-							<input id="upstairsTemp" readonly type="text" />
+						<td id='td-upstairs-temp' class='td-class'>
+							<label id='lbl-upstairs-temp' for='upstairs-temp'>Upstairs Temperature</label> 
+							<input id='upstairs-temp' class='input-class' readonly type="text" />
 						</td>
 					</tr>
 					<tr>
-						<td id="tdTriggerDiff">
-							<label id="lblTriggerDiff" for="triggerDiff">Trigger Differential</label> 
-							<input id="triggerDiff" type="text" maxlength="3" onblur="setTriggerDiff()" onkeypress="return onlyNumberKey(event)"/>
+						<td id='td-trigger-diff' class='td-class'>
+							<label id='lbl-trigger-diff' for='trigger-diff'>Trigger Differential</label> 
+							<input id='trigger-diff' class='input-class' type='text' maxlength='3' onblur='setOnBlur();' onfocus='setOnFocus();' onkeypress='return onlyNumberKey(event);' onkeyup='validateNoValue();setTriggerDiff();'/>
 						</td>
-						<td id="tdFanStatus">
-							<div id="divLblFanStatus">
-								<label id="lblFanStatus" for="fanstatus">Fan Status</label>
+						<td id='td-fan-status'>
+							<div id='div-lbl-fan-status'>
+								<label id='lbl-fan-status' for='fan-status'>Fan Motion</label>
 							</div>
-							<div id="divFanStatus">
-								<input readonly type="text" id="fanstatus" />
+							<div id='div-fan-status'>
+								<input id='fan-status' type='text' readonly/>
 							</div>
-							<div id="divFanImages">
-								<img id="fanoff" src="fanoff.gif" >
-								<img id="fanon" src="fan.gif"     >
+							<div id='div-fan-images'>
+								<img id='img-fan-off' class='img-class' src='images/fanoff.gif'>
+								<img id='img-fan-on'  class='img-class' src='images/fan.gif'   >
 							</div>
 						</td>
 					</tr>
 					<tr>
-						<td id="tdButtons">
-							<button onClick="setFan('ON')">On</button>
-							<button onClick="setFan('OFF')">Off</button>
-							<button onClick="setFan('AUTO')">Auto</button>
+						<td id="td-buttons">
+							<button id='btn-on' class='btn-class' onClick="setFan('ON')">On</button>
+							<button id='btn-off' class='btn-class' onClick="setFan('OFF')">Off</button>
+							<button id='btn-auto' class='btn-class' onClick="setFan('AUTO')">Auto</button>
 						</td>
-						<td id="tdFanSetting">
-							<label id="lblFanSetting" for="fansetting">Fan Setting</label> 
-							<input id="fansetting" readonly type="text" value="OFF" />
+						<td id='td-fan-setting' class='td-class'>
+							<label id='lbl-fan-setting' for='fansetting'>Fan Setting</label> 
+							<input id='fan-setting' class='input-class' readonly type='text' value='OFF' />
 						</td>
 					</tr>
 				</table>
-				<button id="btnAbout" onclick="$('#divAboutText').fadeIn()">About</button>
+				<button id='btn-about' class='btn-class' onclick='$("#divabouttext").fadeIn()'>About</button>
 			</div>
-	        <div id="divAboutText"></div>
+	        <div id='divabouttext'></div>
         </div>
 	</body>
 </html>

@@ -14,6 +14,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 //
 // to run, in a web browser type http://localhost:8080 and press enter
 //
+// this app demonstrates back-end web services (java, spring boot, json) and front-end client (javascript, jquery, ajax, json, css), MVC software design
+
 @SpringBootApplication
 @EnableScheduling
 public class FanWebService {
@@ -21,5 +23,4 @@ public class FanWebService {
 	public static void main(String[] args) {
 		SpringApplication.run(FanWebService.class, args);
 	}
-
 }
