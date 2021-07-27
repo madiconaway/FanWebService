@@ -5,5 +5,7 @@ be hotter. The device would be connected to a downstairs fan
 connected to a relay, and would toggle the fan on or off via 
 a web service. The fan would blow cooler air upstairs, thus equalizing 
 the lower and upper temperatures. In AUTO mode the fan would turn off 
-when the temperatures were equal. This would allow someone to controller 
-the fan from anywhere in the world.
+when the temperatures were equal. The fan would turn on again when the
+upstairs temperature reached the value defined by the trigger differential. 
+
+This would allow someone to control the fan from anywhere in the world.

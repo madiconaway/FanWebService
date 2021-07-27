@@ -1,185 +1,207 @@
 @charset "ISO-8859-1";
 
 h1 {
-   margin-top: 5px;
+	margin-top: 5px;
 }
 
-#masterDiv {
-	width: 510px; 
-	height: 600px; 
-	position: absolute; 
-	left: 50%; 
-	top: 20%; 
+/* ids */
+
+#div-master {
+	width:       510px; 
+	height:      600px; 
+	position:    absolute; 
+	left:        50%; 
+	top:         20%; 
 	margin-left: -250px; 
 }
 
-#headerDiv {
-	border:        2px solid blue; 
-	border-radius: 15px; 
-	width:         500px; 
-	height:        50px; 
-	background:    lightgray;  
-	text-align:    center;
+#div-header {
+	border:          2px solid black; 
+	border-radius:   15px; 
+	box-shadow:      5px 3px 10px #404040;	
+	display:         flex;
+	height:          50px;	
+	justify-content: center;
+	overflow:        hidden;
+	position:        relative;
+	width:           500px; 
 }
 
-#mainDiv {
-	border:        2px solid blue; 
-	border-radius: 15px; 
-	background:    blue; 
-	width:         500px; 
-	height:        300px; 
-	text-align:    center;
+#div-main {
+	border:           2px solid black; 
+	border-radius:    15px; 
+	background-image: url('../images/copperbackground.png');
+	width:            500px; 
+	height:           300px; 
+	text-align:       center;
+	box-shadow:       3px 3px 5px #404040;
 }
 
-#mainTable {
-	border:         1px solid; 
-	border-spacing: 0px; 
-	display:        inline-table; 
-	background:     white; 
-	margin-top:     50px;
-}
-
-#triggerDiff {
-	width:        50px;
-	margin-left:  10px;
-	margin-right: 10px;
-}
-
-
-#downstairsTemp {
-	width:        50px; 
-	margin-left:  10px;  
-	margin-right: 10px; 
-}
-
-#tdDownstairsTemp {
-	border:     1px solid; 
-	text-align: center; 
-	margin:     0px;
-	height:     60px;
-}
-
-#lblDownstairsTemp {
-	margin-left: 10px;
-}
-
-#lblUpstairsTemp {
-	margin-left: 10px;
-}
-
-#tdUpstairsTemp {
-	border:     1px solid;
-	text-align: center; 
-	margin:     0px;
-	height:     60px;
-}
-
-#upstairsTemp {
-	width:        50px; 
-	margin-left:  10px; 
-	margin-right: 10px;
-}
-
-#fanoff {
-	visibility: visible; 
-	margin-top: 3px; 
-	width:      75px; 
-	height:     50px; 
-	position:   absolute;
-}
-
-#fanon {
-	    visibility: hidden; 
-	    margin-top: 3px; 
-	    width:      75px; 
-	    height:     50px;
-}
-
-#tdButtons {
-	border:     1px solid;
-	text-align:	center; 
-	margin:     0px;
-}
-
-#fansetting {
-	width:        50px; 
-	margin-left:  5px; 
-	margin-right: 10px;
-}
-
-#lblFanSetting {
-	margin-left: 10px;
-}
-
-#tdFanSetting {
-	border: 1px solid; 
-	height: 60px; 
-	margin: 0;
-}
-
-#divFanImages {
+#div-fan-images {
 	display:  table-cell; 
 	position: relative; 
 	width:    33%;
 }
 
-#fanstatus {
-	display:  block; 
-	position: absolute; 
-	top:      18px; 
-	left:     10px; 
-	width:    50%;
-}
-
-#divFanStatus {
+#div-fan-status {
 	display:  table-cell; 
 	position: relative; 
-	width:    31%;
+	width:    20%;
 }
 
-#divLblFanStatus {
+#div-lbl-fan-status {
 	display:  table-cell; 
 	position: relative; 
 	width:    36%;
 }
 
-#lblFanStatus {
-	display:  block; 
-	position: absolute; 
-	top:      20px; 
-	left:     10px;
+/* this id has no hyphens because the fade out method is being set in the click event in the ready function in javascript and it won't work with hyphens in the onclick event. go figure  */
+#divabouttext {
+	background:    url('../images/aboutbackground.png');
+	border:        1px solid black;
+	box-shadow:    10px 10px 10px #404040;
+	display:       none;
+	height:        210px;
+	padding-left:  10px;
+	padding-right: 10px;
+	width:         482px;
 }
 
-#tdFanStatus {
-	border: 1px solid; 
-	margin: 0px; 
-	height:60px;
+#table-main {
+	border:         1px solid; 
+	border-spacing: 0px; 
+	display:        inline-table; 
+	background:     white; 
+	margin-top:     50px;
+	box-shadow:     2px 2px 5px #404040;
 }
 
-#tdTriggerDiff {
+#td-buttons {
+	background: url('../images/metal1.png');
+	border:     1px solid;
+	text-align:	center; 
+}
+
+#td-fan-status {
 	border:     1px solid; 
-	text-align: center; 
-	margin:     0px; 
+	margin:     5px; 
 	height:     60px;
+	background: url('../images/metal1.png');
 }
 
-#lblTriggerDiff {
+#img-fan-off {
+	visibility: visible; 
+	position:   absolute;
+}
+
+#img-fan-on {
+	visibility: hidden; 
+}
+
+#img-title {
+	position: absolute;
+	margin:   auto;
+}
+
+#lbl-downstairs-temp {
 	margin-left: 10px;
 }
 
-#btnAbout {
-	float: right;
+#lbl-upstairs-temp {
+	margin-left: 10px;
+}
+
+
+#lbl-trigger-diff {
+	margin-left: 40px;
+}
+
+#lbl-fan-status {
+	display:  block; 
+	position: absolute; 
+	top:      20px; 
+	left:     5px;
+}
+
+#lbl-fan-setting {
+	margin-left: 10px;
+}
+
+#fan-status {
+	font-weight: bold;
+	display:     block; 
+	position:    absolute; 
+	top:         18px; 
+	left:        3px; 
+	width:       70%;
+	height:      20px;
+	border:      1px solid transparent;
+	border-left: 1px solid #404040;
+	border-top:  1px solid #404040;
+	box-shadow:  inset 0 0 5px #000000;
+	outline:     none;
+	cursor:      default;
+	text-align:  center;	
+}
+
+#btn-about {
+	float:        right;
 	margin-right: 10px;
-	margin-top: 15px;
+	margin-top:   15px;
 }
 
-#divAboutText {
-	border:        1px solid black;
-	background:    lightyellow;
-	width:         500px;
-	height:        180px;
-	padding-left:  10px;
-	padding-right: 10px;
-	display:       none;
+#btn-close {
+	float:        right; 
+	margin-right: 10px; 
+	margin-top:   5px;
 }
 
+/* classes */
+
+.btn-class {
+	background: url('../images/btnbackground.png');
+	border-radius: 6px;
+	box-shadow:    1px 1px 3px black;
+	cursor:        pointer;
+	font-weight:   bold;
+	height:        30px;
+	width:         50px;
+}
+
+.btn-class:active {
+	box-shadow: none;
+}
+
+.img-class {
+	height:        50px;
+	margin-top:    3px;
+	width:         75px;
+	border:        3px solid transparent;
+	border-left:   3px solid #404040;
+	border-top:    3px solid #404040;
+	border-right:  3px solid gray;
+	border-bottom: 3px solid gray;	
+}
+
+.input-class {
+	border:       1px solid transparent;
+	border-left:  1px solid #404040;
+	border-top:   1px solid #404040;
+	box-shadow:   inset 0 0 5px #000000;
+	cursor:       default;
+	font-weight:  bold;	
+	height:       20px; 
+	margin-left:  10px;  
+	margin-right: 10px;
+ 	outline:      none;
+	text-align:   center;
+	width:        50px;	
+}
+
+.td-class {
+	background:   url('../images/metal1.png');
+	border:       1px solid;
+	height:       60px;
+	margin-right: 10px;
+	text-align:   right; 	
+}

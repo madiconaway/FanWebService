@@ -2,11 +2,11 @@ var loaded = false;
 
 <!-- adds the about text and the Close button behavior -->
 	$(document).ready(function(){
- 	  $("#divAboutText").load("./text/about.txt");
+ 	  $('#divabouttext').load('./text/about.txt');
       $('button').on('click',function(){
-        if( !$('#btnClose').length ) {
-          var r= $('<button id="btnClose" style="float: right; margin-right: 10px; margin-top: 15px;" onclick="$(&quot;#divAboutText&quot;).fadeOut()">Close</button>');
-          $("#divAboutText").append(r);
+        if( !$('#btn-close').length ) {
+          var r= $('<button id="btn-close" class="btn-class" onclick="$(&quot;#divabouttext&quot;).fadeOut()">Close</button>');
+          $('#divabouttext').append(r);
         }
       });
 	});
@@ -14,98 +14,107 @@ var loaded = false;
 <!-- gets all the values from the fan web service and displays them on the screen. this is performed once when the body is loaded	 -->
 	function getInitialFanValues() {
 		if (!loaded) {
-			getFanValue('upstairsTemp','getupstairstemp');
-			getFanValue('downstairsTemp','getdownstairstemp');
-			getFanValue('triggerDiff','gettriggerdiff');
-			getFanValue('fansetting','getfansetting');
-			getFanValue('fanstatus','getstatus');			
-	    	setInterval(getIntervalValues, 1000); <!--  set a timer to run getIntervalValues once a second -->
+			getJsonValue('upstairs-temp','getupstairstemp');
+			getJsonValue('downstairs-temp','getdownstairstemp');
+			getJsonValue('trigger-diff','gettriggerdiff');
+			getJsonValue('fan-setting','getfansetting');
+			getJsonValue('fan-status','getstatus');			
+ 	    	setInterval(getIntervalValues, 1000);  <!--set a timer to run getIntervalValues once a second -->
 			loaded = true;
 		}
 	}
 	
 <!--  Gets the upstairsTemp and fanstatus values from the web service and displays them on the screen -->
 	function getIntervalValues() {
-		getFanValue('upstairsTemp','getupstairstemp');
-		getFanValue('fanstatus','getstatus');		
+	    getJsonValue('upstairs-temp','getupstairstemp');
+		getJsonValue('fan-status','getstatus');		
 	}
 	
 <!-- 	Posts the triggerDiff element in the fan to the web service -->
 	function setTriggerDiff() {
-    	var d = document.getElementById("triggerDiff");
+		var field = 'trigger-diff';	
+    	var d = $('#' + field);
+    	var obj = {};
+    	obj[field] = d.val();
+    	
 	    $.ajax({
-	        type: "POST",
-	        url: "http://localhost:8080/posttriggerdiff?triggerDiff="+d.value,
-	        contentType: "text/plain",
-	        datatype: "text",
-	        success: function (html) {
-	        },
+	        type: 'post',
+	        url: 'http://localhost:8080/posttriggerdiff',
+	        contentType: 'application/json; charset=utf-8',
+	        datatype: 'json',
+	        data: JSON.stringify(obj),
+	        success: function (html) {},
 	        error: function(){ 
-	          console.log('posttriggerdiff POST failed!'); 
+	        	console.log('posttriggerdiff POST failed!'); 
 	        }
 	    });
 	}
 	
 <!-- 	posts the fanSetting element in the fan to the web service. also displays the value ON, OFF, or AUTO. occurs when the ON/OFF/AUTO buttons are clicked -->
 	function setFan(f) {
-		var d = document.getElementById("fansetting");
-		if (f=='ON' && f==d.value) {
-			return; //fan is already ON, do nothing
-		} else if (f=='OFF' && f==d.value) {
-			return; //fan is already OFF, do nothing
-		} else if (f=="AUTO" && f==d.value) {
-			return; //fan is already AUTO, do nothing
-		} 
+	
+		var field = 'fan-setting';
+    	var obj = {};
+    	obj[field] = f;
+		var d = $('#fan-setting');
+
+		if (f=='ON' && f==d.val()) {
+			return; <!--  fan is already ON, do nothing -->
+		} else if (f=='OFF' && f==d.val()) {
+			return; <!-- fan is already OFF, do nothing -->
+		} else if (f=="AUTO" && f==d.val()) {
+			return; <!-- fan is already AUTO, do nothing -->
+		}
+
 		//tell the web service to turn the fan on or off
 	    $.ajax({
-	        type: "POST",
-	        url: "http://localhost:8080/postfansetting?fanSetting="+f,
-	        contentType: "text/plain",
-	        datatype: "text",
+	        type: 'post',
+	        url: 'http://localhost:8080/postfansetting',
+	        contentType: 'application/json; charset=utf-8',
+	        datatype: 'json',
+	        data: JSON.stringify(obj),
 	        success: function (html) {
-	       		d.value=f;
+	       		d.val(f);
 	        },
 	        error: function(){ 
-	          console.log('fansetting POST failed!'); 
+				console.log('fansetting POST failed!'); 
 	        }
 	    });
 	}
 
-<!-- get the fan element value as specified by 'element' and 'getMapping' from the web service-->
-	function getFanValue(element,getMapping) {
-	    $.ajax({
-	        type: "GET",
-	        url: "http://localhost:8080/"+getMapping,
-	        contentType: "text/plain",
-	        datatype: "text",
+<!-- gets the JSON value from the web service -->
+	function getJsonValue(element,getMapping) {
+		$.ajax({
+		    type: 'get',
+		    url: 'http://localhost:8080/' + getMapping,
+		    dataType: 'json',
 	        success: function (data) {
-	        	var d = document.getElementById(element);
-	        	if (d.id == "fanstatus") {
-		        	if (data) {
-		        		d.value="ON";	
-						animateFan(true);
+	        	var d = $('#' + element);
+	        	if (d.attr('id') == 'fan-status') {
+		        	if (data[element]) {
+		        		d.val('ON');	
 		        	} else {
-		        		d.value="OFF";
-		        		animateFan(false);
+		        		d.val('OFF');
 		        	}	
+		        	animateFan(data[element]);
 	        	} else {
-	        		d.value=data;
+					d.val(data[element]);
 	        	}
 	        },
-	        error: function(){ 
-	          console.log(getMapping+' GET failed!'); 
-	        }
-	    });
+	       	error: function(){ 
+		        console.log(getMapping+' GET failed!'); 
+		    }
+		}); 
 	}
 	
 <!-- 	shows the animated or still gif as determined by b, true=animated fan, false=still fan -->
 	function animateFan(b) {
 		if (b) {
-			document.getElementById("fanoff").style.visibility = "hidden";
-    		document.getElementById("fanon").style.visibility = "visible";
+			$('#img-fan-off').css('visibility','hidden');
+    		$('#img-fan-on').css('visibility','visible');
 		} else {
-    		document.getElementById("fanoff").style.visibility = "visible";
-    		document.getElementById("fanon").style.visibility = "hidden";
+    		$('#img-fan-off').css('visibility','visible');
+			$('#img-fan-on').css('visibility','hidden');    		
 		}
 	}
 	
@@ -118,4 +127,26 @@ var loaded = false;
         return true;
     } 
 
+<!-- on keypress event -->
+	function validateNoValue() {
+		setTriggerDiffColor('#b0b000');
+	}
+
+<!-- on blue event	 -->
+	function setOnBlur() {
+		setTriggerDiffColor('black');
+	}
 	
+	function setOnFocus() {
+		$('#trigger-diff').css('box-shadow','inset 0 0 7px #b0b000');
+	}
+	
+<!-- sets the appropriate color for the trigger differential input box -->
+	function setTriggerDiffColor(clr) {
+		var d = $('#trigger-diff');
+		if (d.val().length==0 || d.val()=='0') {
+			d.css('box-shadow','inset 0 0 7px red');
+		} else {
+			d.css('box-shadow','inset 0 0 5px '+clr);
+		}
+	}

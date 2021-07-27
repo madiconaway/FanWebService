@@ -1,10 +1,11 @@
 package com.fan.service.bean;
 
+
+
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement (name="fan")
 public class Fan {
-	private String name;
 	private double upstairsTemp = 85;
 	private double downstairsTemp = 75;
 	private double triggerDifferential = 3;
@@ -12,14 +13,6 @@ public class Fan {
 	private boolean status = false;
     private String fanSetting = "OFF";
     
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public double getUpstairsTemp() {
 		return upstairsTemp;
 	}
